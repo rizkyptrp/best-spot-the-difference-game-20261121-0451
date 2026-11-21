@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odd Twin — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="hud">
+      <div id="title-block">
+        <h1>Odd Twin</h1>
+        <p id="level-name">Level 1 of 3 — Sunny Breakfast Nook</p>
+        <p id="level-subtitle">Morning tea, a sleepy cat, and seven sneaky changes.</p>
+      </div>
+      <div id="stats">
+        <div class="stat"><span class="stat-label">Found</span><span id="found-count">0 / 7 found</span></div>
+        <div class="stat"><span class="stat-label">Still hidden</span><span id="remaining-count">7 remaining</span></div>
+        <div class="stat"><span class="stat-label">Score</span><span id="score">0</span></div>
+        <div class="stat"><span class="stat-label">Time</span><span id="timer">2:30</span></div>
+      </div>
+      <div id="timer-track"><div id="timer-bar"></div></div>
+      <div id="found-dots" aria-label="differences found"></div>
+    </header>
+
+    <main id="board-wrap">
+      <canvas id="panels" width="1144" height="420"></canvas>
+
+      <div id="title-overlay" class="overlay">
+        <div class="panel-card">
+          <h2>Odd Twin</h2>
+          <p class="tagline">Two pictures. One is the odd twin.<br>Find every difference before the clock runs out.</p>
+          <ul class="how-to">
+            <li><strong>Click</strong> a difference on either picture to circle it.</li>
+            <li>A wrong click costs <strong>3 seconds</strong> — look twice, click once.</li>
+            <li><strong>H</strong> spends a hint, <strong>R</strong> restarts the level, <strong>1 / 2 / 3</strong> pick a level, <strong>M</strong> mutes.</li>
+            <li>Quick finds in a row build a <strong>streak bonus</strong>. Clearing a level fast earns a time bonus.</li>
+          </ul>
+          <div class="level-cards">
+            <button class="level-card" data-level="0"><span class="level-num">1</span><span class="level-card-name">Sunny Breakfast Nook</span><span class="level-card-meta">7 differences · 2:30</span></button>
+            <button class="level-card" data-level="1"><span class="level-num">2</span><span class="level-card-name">Pip's Garden Shed</span><span class="level-card-meta">9 differences · 3:00</span></button>
+            <button class="level-card" data-level="2"><span class="level-num">3</span><span class="level-card-name">The Lantern Library</span><span class="level-card-meta">12 differences · 4:00</span></button>
+          </div>
+          <button id="start-button" class="primary-button">Start the hunt</button>
+        </div>
+      </div>
+
+      <div id="level-clear-overlay" class="overlay hidden">
+        <div class="panel-card">
+          <h2>Level complete!</h2>
+          <p class="tagline">You found every difference in <strong id="clear-level-name"></strong>.</p>
+          <p class="result-line">Found <strong id="clear-found"></strong> · Time bonus <strong id="clear-time-bonus"></strong></p>
+          <p class="result-line">Score: <strong id="clear-score"></strong></p>
+          <button id="next-level-button" class="primary-button">Next level</button>
+        </div>
+      </div>
+
+      <div id="victory-overlay" class="overlay hidden">
+        <div class="panel-card">
+          <h2>You found them all!</h2>
+          <p class="tagline">Every difference in every room — the twins are identical again.</p>
+          <p class="result-line">Final score: <strong id="victory-score"></strong></p>
+          <button id="play-again-button" class="primary-button">Play again</button>
+          <button id="title-button" class="secondary-button">Back to the title screen</button>
+        </div>
+      </div>
+
+      <div id="time-up-overlay" class="overlay hidden">
+        <div class="panel-card">
+          <h2>Time's up!</h2>
+          <p class="tagline">The clock beat you in <strong id="timeup-level-name"></strong>.</p>
+          <p class="result-line">You found <strong id="timeup-found"></strong> differences.</p>
+          <button id="retry-button" class="primary-button">Try this level again</button>
+        </div>
+      </div>
+    </main>
+
+    <footer id="controls">
+      <button id="hint-button" class="control-button">Hint (H) — <span id="hints-left">3</span> left</button>
+      <button id="restart-button" class="control-button">Restart level (R)</button>
+      <button id="mute-button" class="control-button">Sound: on (M)</button>
+      <span id="level-picker">
+        <button class="control-button level-pick active" data-level="0">1 · Nook</button>
+        <button class="control-button level-pick" data-level="1">2 · Shed</button>
+        <button class="control-button level-pick" data-level="2">3 · Library</button>
+      </span>
+      <span id="foot-note">Odd Twin — an original spot-the-difference game. All art is drawn in code; all sounds are synthesized.</span>
+    </footer>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

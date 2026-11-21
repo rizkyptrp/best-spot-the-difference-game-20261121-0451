@@ -1,0 +1,222 @@
+/* Odd Twin — layout and styling. Warm paper tones, chunky readable HUD. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #2b2118;
+  color: #f2e6c8;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+#app {
+  width: 1184px;
+  margin: 0 auto;
+  padding: 12px 20px 16px;
+}
+
+#hud {
+  background: #3a2e22;
+  border: 2px solid #6e5a3a;
+  border-radius: 14px;
+  padding: 10px 18px 12px;
+}
+
+#title-block h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: #ffd93b;
+}
+
+#level-name {
+  margin: 2px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#level-subtitle {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #d8c9a3;
+}
+
+#stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 8px;
+}
+
+.stat { display: flex; flex-direction: column; }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #d8c9a3; }
+.stat span:last-child { font-size: 22px; font-weight: 800; }
+
+#timer.low { color: #ff6b5e; animation: blink 0.5s steps(2) infinite; }
+#timer.penalty-flash { color: #ff6b5e; }
+
+@keyframes blink { 50% { opacity: 0.4; } }
+
+#timer-track {
+  height: 8px;
+  background: #241a12;
+  border-radius: 4px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+#timer-bar {
+  height: 100%;
+  width: 100%;
+  background: #7fe08a;
+  border-radius: 4px;
+  transition: width 0.2s linear;
+}
+
+#timer-bar.low { background: #ff6b5e; }
+
+#found-dots { margin-top: 8px; min-height: 14px; }
+.dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #8a7a5a;
+  margin-right: 6px;
+  background: transparent;
+}
+.dot.found { background: #ffd93b; border-color: #ffd93b; }
+
+#board-wrap {
+  position: relative;
+  margin-top: 12px;
+}
+
+#panels {
+  display: block;
+  width: 1144px;
+  height: 420px;
+  border-radius: 10px;
+  cursor: crosshair;
+  background: #f6e3bd;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 20, 12, 0.72);
+  border-radius: 10px;
+}
+
+.overlay.hidden { display: none; }
+
+.panel-card {
+  background: #fdf6e3;
+  color: #3a2e22;
+  border-radius: 16px;
+  padding: 26px 34px;
+  max-width: 640px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.panel-card h2 {
+  margin: 0 0 6px;
+  font-size: 34px;
+  color: #b03a2e;
+}
+
+.tagline { margin: 4px 0 14px; font-size: 16px; line-height: 1.5; }
+
+.how-to {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 auto 16px;
+  max-width: 520px;
+}
+
+.level-cards {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.level-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 10px;
+  border: 2px solid #c9b48a;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #3a2e22;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.level-card:hover { border-color: #b03a2e; background: #fff3d6; }
+.level-num { font-size: 26px; font-weight: 800; color: #b03a2e; }
+.level-card-name { font-size: 13px; font-weight: 700; }
+.level-card-meta { font-size: 11px; color: #8a7a5a; }
+
+.result-line { font-size: 17px; margin: 6px 0; }
+
+.primary-button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: inherit;
+  color: #fff;
+  background: #b03a2e;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.primary-button:hover { background: #c94f33; }
+
+.secondary-button {
+  display: inline-block;
+  margin: 8px 0 0 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #3a2e22;
+  background: #e8d9a8;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.control-button {
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #f2e6c8;
+  background: #3a2e22;
+  border: 2px solid #6e5a3a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.control-button:hover:not(:disabled) { border-color: #ffd93b; color: #ffd93b; }
+.control-button:disabled { opacity: 0.45; cursor: default; }
+.control-button.active { border-color: #ffd93b; color: #ffd93b; }
+
+#level-picker { display: flex; gap: 6px; margin-left: 8px; }
+#foot-note { margin-left: auto; font-size: 12px; color: #a89878; max-width: 340px; text-align: right; }
